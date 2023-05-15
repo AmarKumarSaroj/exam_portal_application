@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Timer</title>
+</head>
+<body>
+	<h1>Timer</h1>
+	<div id="countdown"></div><br><br><br>
+    <input  id="my-paragraph" th:value="${endTime}"/> 
+<script>
+var valuees = document.getElementById("my-paragraph");
+var value = valuees.value;
+console.log(value);
+var endTime = new Date(value).getTime();
+var x = setInterval(function() {
+    var now = new Date().getTime();
+    var distance = endTime - now;
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);    
+    document.getElementById("countdown").innerHTML = minutes + "m " + seconds + "s ";
+    
+    if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("countdown").innerHTML = "EXPIRED";
+    }
+}, 1000);
+</script>
+
+
+</body>
+</html>

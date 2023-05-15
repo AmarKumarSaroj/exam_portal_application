@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="utf-8">
+<title>Raj Info - Online Examination</title>
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta content="" name="keywords">
+<meta content="" name="description">
+<th:block th:insert="include/headers::headers"></th:block>
+</head>
+<body>
+	<!-- Spinner Start -->
+	<div id="spinner"
+		class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+		<div class="spinner-grow text-primary" role="status"></div>
+	</div>
+	<!-- Navbar Start -->
+	<nav
+		class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0">
+		<a href="/"
+			class="navbar-brand d-flex align-items-center border-end px-4 px-lg-5">
+			<h2 class="m-0">
+				<i class="fa fa-laptop-code text-primary me-2"></i>Pariksha
+			</h2>
+		</a>
+		<button type="button" class="navbar-toggler me-4"
+			data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+	</nav>
+	<!-- Navbar End -->
+
+
+	<!-- Carousel Start -->
+	<!-- Page Header Start -->
+	<div class="container-fluid page-header py-6 my-6 mt-0 wow fadeIn"
+		data-wow-delay="0.1s">
+		<div class="container text-center">
+			<h1 class="display-2 text-light mb-5 animated slideInDown">Welcome
+				to Your Exam</h1>
+			<a href="#instructions-lightbox"
+				class="btn-solid-reg popup-with-move-anim btn btn-primary py-sm-3 px-sm-5">Show
+				Instructions</a> <a th:href="@{/instruction}"
+				class="btn btn-light py-sm-3 px-sm-5 ms-3">Start my Test</a>
+		</div>
+	</div>
+
+	<!-- Details Lightbox 1 -->
+	<div id="instructions-lightbox"
+		class="lightbox-basic zoom-anim-dialog mfp-hide">
+		<div class="container">
+			<div class="row">
+				<button title="Close (Esc)" type="button" class="mfp-close x-button">×</button>
+				<div class="col-lg-8">
+					<h3>List Building</h3>
+					<hr>
+					<h5>Core service</h5>
+					<p>It's very easy to start using Tivo. You just need to fill
+						out and submit the Sign Up Form and you will receive access to the
+						app.</p>
+					<ul class="list-unstyled li-space-lg">
+						<li class="media"><i class="fas fa-square"></i>
+						<div class="media-body">List building framework</div></li>
+						<li class="media"><i class="fas fa-square"></i>
+						<div class="media-body">Easy database browsing</div></li>
+						<li class="media"><i class="fas fa-square"></i>
+						<div class="media-body">User administration</div></li>
+						<li class="media"><i class="fas fa-square"></i>
+						<div class="media-body">Automate user signup</div></li>
+						<li class="media"><i class="fas fa-square"></i>
+						<div class="media-body">Quick formatting tools</div></li>
+						<li class="media"><i class="fas fa-square"></i>
+						<div class="media-body">Fast email checking</div></li>
+					</ul>
+					<a class="btn-solid-reg mfp-close" href="sign-up.html">SIGN UP</a>
+					<a class="btn-outline-reg mfp-close as-button" href="#screenshots">BACK</a>
+				</div>
+				<!-- end of col -->
+			</div>
+			<!-- end of row -->
+		</div>
+		<!-- end of container -->
+	</div>
+	<!-- end of lightbox-basic -->
+	<!-- end of details lightbox 1 -->
+	<div th:insert="include/footer::footer"></div>
+	<div th:insert="include/copyright::copyright"></div>
+	<!-- Back to Top -->
+	<a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i
+		class="bi bi-arrow-up"></i></a>
+	<div th:insert="include/scripts::scripts"></div>
+</body>
+
+</html>

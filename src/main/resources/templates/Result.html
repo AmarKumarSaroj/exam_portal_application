@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+</head>
+<body>
+	<div align="center">
+		<div>
+			<table border="1">
+				<tr>					
+				<th>Correct Marks</th>
+				<th>Wrong Marks</th>
+				<th>Skipped Question</th>
+				</tr>
+				<tr>
+				<td th:text="${correctValue}"></td>
+					<td th:text="${wrongValue}"></td>
+					<td th:text="${skipped}"></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</body>
+</html>

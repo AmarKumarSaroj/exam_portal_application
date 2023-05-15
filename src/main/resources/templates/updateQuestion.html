@@ -1,0 +1,56 @@
+<!doctype html>
+<html xmlns:th="https://www.thymeleaf.org/">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>online exam</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+	crossorigin="anonymous">	
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+		crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="table-responsive"><br>  
+  
+  <table class="table" border="1">
+  <thead>  <tr>
+  <th> QuestionId </th>
+  <th>Title</th>
+  <th>Option1 </th>
+  <th>Option2</th>
+  <th>Option3</th>
+  <th>Option4</th>  
+  <th>CorrectOption</th>
+ <th>chrCourseCode</th>
+ <th>chrQuestType</th>
+  <th>chrImagePath</th>
+  <th scope="col">Action</th>
+  </tr>
+  
+  <tr th:each="question:${questionlist}">
+  <td th:text="${question.quid}">1</td>
+  <td th:text="${question.Question}">what is your name?</td>
+  <td th:text="${question.option1}">Amar</td>
+  <td th:text="${question.option2}">sudhanshu</td>
+  <td th:text="${question.option3}">akash</td>
+  <td th:text="${question.option4}">annu</td>
+   <td th:text="${question.CorrectOption}">2</td>
+    <td th:text="${question.chrCourseCode}">single</td>
+     <td th:text="${question.chrQuestType}">Java</td>
+      <td th:text="${question.chrImagePath}">Null</td>
+  <td>
+   <a  th:href="@{/updateQuestionPage/{quid}(quid=${question.quid})}" class="btn btn-primary">Update</a> 
+  </td>
+  </tr>
+  </thead>
+  
+  </table>
+</div>
+	
+</body>
+</html>

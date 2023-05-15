@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  margin: 0;
+  background-color: #f1f1f1;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#navbar {
+  background-color: #333;
+  position: fixed;
+  top: -50px;
+  width: 100%;
+  display: block;
+  transition: top 0.3s;
+}
+
+#navbar a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 15px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+
+</style>
+</head>
+<body>
+
+
+
+<div align="center"    th:each="details : ${examDetails}">
+ <div class="card" style="width: 70%">
+  <div class="card-header">
+   Exam Instruction
+  </div>
+  <form th:action="@{/question}" method="post">
+  <div class="card-body" style="height: 100%">
+    <h5 class="card-title">Special title treatment</h5>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <p  th:text="${details.Description}"> 
+    
+    
+    Read Carefully Exam Instructions<br>
+         * Instructions Online Exam *<br>
+Take-home examinations will be administered via the online ExamSoft portal, not the Examplify program installed on<br>
+your laptop. This option will allow you to download a PDF version of your exam questions and compose your answers in<br>
+a word processing program on your computer (e.g. Word). Check the exam schedule on the BU Law website for specific<br>
+dates and times. An email with your exam details will be sent to you prior to each take-home exam as well.<br>
+The Registrar’s Office will monitor the download and upload history for the exam. Any student who returns his <br>or her
+answers late may be subject to the same disciplinary actions as students who return exams late in person or who<br>
+continue to write during a proctored exam. Instructions for downloading the exam and uploading your answers are<br>
+included here.<br>
+Step One: Download the take-home exam question file.<br>
+1. You may download the take-home exam question file during the designated window. Do not download the<br>
+exam file in advance. Download the file when you are ready to work on your exam.<br>
+2. Visit the BU Law custom homepage at www.examsoft.com/bulaw and log in as an exam taker using your login<br>
+credentials (your BU ID number and ExamSoft password). Recommended browsers are Chrome and Firefox.<br>
+3. Click on the “Courses” tab at the top of the page.<br>
+4. Carefully select the course name from the listing during the availability window. Students who download the<br>
+exam questions late will not be entitled to additional time to complete the exam.<br>
+5. In order to download and print the exam file, click on the “Action Box.”<br>
+6. Click on download from the pop-up window and save the downloaded file to the preferred location on your<br>
+computer. This will initiate the download of the exam question file and start the timer on your exam. Do not<br>
+initiate the download until you are ready to work on your exam.<br>
+7. To check your exam due date/time, scroll over to the Upload Due Date field for the correct time your exam is<br>
+due. There is another field that displays time remaining – DO NOT rely on the information in this field as there is<br>
+a discrepancy in the “Timer” and it may display incorrect information.<br>
+8. Log out of ExamSoft after you have successfully downloaded the questions.<br>
+Step Two: Complete your take-home exam as a word document - DO NOT INCLUDE YOUR NAME!<br>
+1. In order to protect your anonymity for grading, DO NOT type your name anywhere in the word document.<br>
+2. Insert a “header” in your word document and type your course name and 4-digit exam number into the header<br>
+so that it appears at the top of every page. In the alternative you may include a cover page showing the course<br>
+name and your exam number. Your exam number can be found on the Student Link in the Spring 2020 grades<br>
+tab.<br>
+3. Very Important – save the word document containing your answers, with the name of your course (as listed in<br>
+the exam specific instructions you receive via email) and exam number as the title of the file, before you submit<br>
+it.<br>
+Step Three: Upload your completed take-home exam document.<br>
+2<br>
+1. Once you have completed your answers and saved your document as instructed above, return to the BU Law<br>
+custom homepage (www.examsoft.com/bulaw) and log in as an exam taker using your credentials (your BU ID<br>
+and ExamSoft password).<br>
+2. Click on the “Courses” tab at the top of the page.<br>
+3. Click on the course name.<br>
+4. Click on the Action Upload Assignment button.<br>
+Browse your computer and select your completed exam file, choose open and then click ‘Upload.’<br>
+5. If the upload was successful, a green box at the top of the page will confirm that your document has been<br>
+uploaded to the server. You will not receive a separate confirmation email. Here is a sample:<br>
+6. You will be allowed one submission. If you encounter any issues or need assistance for any reason, during<br>
+normal business hours call the School of Law Registrar’s Office at (617) 353-3115. To reach us outside of normal<br>
+business hours, e-mail lawreg@bu.edu. You should attach your completed exam file to document your upload<br>
+attempt was initiated within the required time. You should also document any upload issues you encounter<br>
+(e.g. through noting error messages and/or use of screen shots) and include them in your e-mail. <br>
+     
+
+    </p>
+    	 
+    <p th:text="${details.totalquestions}"></p>
+     <p th:text="${details.wrongmarks}"></p>
+      <p th:text="${details.correctmarks}"></p>
+       <p th:text="${details.endTime}"></p>
+       <p th:text="${details.startTime}"></p>
+        <p th:text="${details.examduration}"></p>
+        <p th:text="${details.candidateId}"></p>
+         <p th:text="${details.subjectName}"></p>
+         
+         <input type="hidden" name="subjectName" th:value="${details.subjectName}"> </input>
+         <input type="hidden" name="candidateId" th:value="${details.candidateId}"> </input>
+    
+    
+    
+  
+      <button type="submit" class="btn btn-primary" name="TypeOperation" th:value="null" >Exam Start</button>
+   
+  </div>
+  
+  </form>
+</div>
+</div>
+
+
+<script>
+// When the user scrolls down 20px from the top of the document, slide down the navbar
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    document.getElementById("navbar").style.top = "0";
+  } else {
+    document.getElementById("navbar").style.top = "-50px";
+  }
+}
+</script>
+
+</body>
+</html>

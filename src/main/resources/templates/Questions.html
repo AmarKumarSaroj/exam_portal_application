@@ -1,0 +1,157 @@
+.
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="utf-8">
+<title>Raj Info - Online Examination</title>
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta content="" name="keywords">
+<meta content="" name="description">
+<th:block th:insert="include/headers::headers"></th:block>
+</head>
+<body>
+	<input id="HOLD-TIME" th:value="${endTime}">
+	<script type="text/javascript">
+
+function onlyOne(checkbox) {
+    var checkboxes = document.getElementsByName('getValueSelectedByUser')
+    checkboxes.forEach((item) => {
+        if (item !== checkbox) item.checked = false;
+    })
+}
+
+  var valuees = document.getElementById("HOLD-TIME");
+  var value = valuees.value;
+  console.log(value);
+  var endTime = new Date(value).getTime();
+  var x = setInterval(function() {
+  var now = new Date().getTime();
+  var distance = endTime - now;
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 60 )) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  document.getElementById("timer-show").innerHTML = hours + "h " +minutes + "m " + seconds + "s ";
+  
+  if (distance < 0) {	  
+	  window.setTimeout(function(){
+		  window.location.href='/results';
+		  }, distance < 0);
+	  
+      clearInterval(x);
+      document.getElementById("timer-show").innerHTML = "EXPIRED";
+  }
+ 
+}, 1000);
+</script>
+
+	<th:block th:insert="include/headers::navbar"></th:block>
+	<!-- Testimonial Start -->
+	<div class="container-xxl" style='min-height: 465px;'>
+		<div class="container">
+			<div class="mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s"
+				style="max-width: 100%;" th:each="obj : ${QuestionsObj}">
+				<div class="p-2">
+					<div align="center">
+						<h4 id="timer-show"></h4>
+					</div>
+					<h4 th:text="${questionPosition +'/25'}">(1/5)</h4>
+					<div class="mx-auto p-2" data-wow-delay="0.1s"
+						style="max-width: 100%;">
+						<form th:action="@{/question}" method="post">
+							<div>
+								<input type="hidden" name="Questions" th:value="${obj.Question}">
+								<h5 class="mt-1 ml-2" th:text="${obj.Question}">Which of
+									the following country has largest population?</h5>
+								<h5>
+									<img th:if="${obj.chrImagePath != null}"
+										th:src="@{${obj.chrImagePath}}" class="img-fluid" alt="...">
+								</h5>
+							</div>
+							<input type="hidden" name="quesId" th:value="${obj.qid}" /> 
+							<input	type="hidden" name="questionCode" th:value="${obj.questionCode}" />
+							<div th:each="objectVal : ${optionList}">
+								<div class="form-group form-check mb-2"
+									th:if="${selectionType == 'multiselect'}">
+									<div th:if="${not #lists.isEmpty(optionsListSelected)}">
+										<input class="form-check-input" type="checkbox" id="checkbox1"
+											name="getValueSelectedByUser" th:value="${objectVal}"
+											th:attr="checked=${#lists.contains(optionsListSelected,objectVal)}">
+										<label class="form-check-label" for="flexCheckDefault"
+											th:text="${objectVal}"> Default checkbox </label>
+									</div>
+
+
+									<div th:unless="${not #lists.isEmpty(optionsListSelected)}">
+										<input class="form-check-input" type="checkbox" id="checkbox1"
+											name="getValueSelectedByUser" th:value="${objectVal}">
+										<label class="form-check-label" for="flexCheckDefault"
+											th:text="${objectVal}"> Default checkbox </label>
+									</div>
+								</div>
+								
+								<div class="form-group form-check mb-2"
+									th:if="${selectionType == 'single'}">
+									<div th:if="${not #lists.isEmpty(optionsListSelected)}">
+										<input class="form-check-input" type="checkbox" id="checkbox1"
+											name="getValueSelectedByUser" th:value="${objectVal}"
+											th:attr="checked=${#lists.contains(optionsListSelected,objectVal)}"
+											onclick="onlyOne(this)"> <label
+											class="form-check-label" for="flexCheckDefault"
+											th:text="${objectVal}"> Default checkbox </label>
+
+									</div>
+
+									<div th:unless="${not #lists.isEmpty(optionsListSelected)}">
+										<input class="form-check-input" type="checkbox" id="checkbox1"
+											name="getValueSelectedByUser" th:value="${objectVal}"
+											onclick="onlyOne(this)"> <label
+											class="form-check-label" for="flexCheckDefault"
+											th:text="${objectVal}"> Default checkbox </label>
+									</div>
+								</div>
+							</div>
+
+							<div
+								class="d-flex flex-row justify-content-between align-items-center p-3 bg-white">
+
+								<div>
+
+									<div th:if="${questionPosition > 1}">
+										<button
+											class="btn btn-primary d-flex align-items-center btn-danger"
+											type="submit" th:name="TypeOperation" th:value="previous">
+											<i class="fa fa-angle-left mt-1 mr-1"></i>&nbsp;previous
+										</button>
+									</div>
+
+								</div>
+								<div th:if="${questionPosition < 25}">
+									<button
+										class="btn btn-primary border-success align-items-center btn-success"
+										type="submit" name="TypeOperation" th:value="save">
+										Save & Next<i class="fa fa-angle-right ml-2"></i>
+									</button>
+								</div>
+								<div th:if="${questionPosition > 24}">
+									<button
+										class="btn btn-primary border-success align-items-center btn-success"
+										type="submit" name="TypeOperation" th:value="submit">
+										Submit <i class="fa fa-angle-right ml-2"></i>
+									</button>
+
+								</div>
+							</div>
+
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div th:insert="include/copyright::copyright"></div>
+	<div th:insert="include/scripts::scripts"></div>
+</body>
+
+</html>
